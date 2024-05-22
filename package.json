@@ -18,9 +18,9 @@
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e:mongodb": "export DBMS=mongodb; docker-compose --env-file ./.env -f ./docker/docker-compose-mongodb.yml up -d; jest --config ./test/jest-e2e.json",
-    "test:e2e:postgres": "export DBMS=postgres; docker-compose --env-file ./.env -f ./docker/docker-compose-postgres.yml up -d; jest --config ./test/jest-e2e.json",
+    "test:e2e:postgres": "docker-compose --env-file ./.env -f ./docker/docker-compose-postgres.yml up -d && jest --config ./test/jest-e2e.json",
     "start:mongodb": "export DBMS=mongodb; docker-compose --env-file ./.env -f ./docker/docker-compose-mongodb.yml up -d; npm run start:dev",
-    "start:postgres": "export DBMS=postgres; docker-compose --env-file ./.env -f ./docker/docker-compose-postgres.yml up -d; npm run start:dev"
+    "start:postgres": "docker-compose --env-file ./.env -f ./docker/docker-compose-postgres.yml up -d && npm run start:dev"
   },
   "dependencies": {
     "@nestjs/common": "^10.0.0",

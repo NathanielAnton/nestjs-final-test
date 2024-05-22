@@ -6,14 +6,14 @@ services:
   postgres:
     image: postgres:latest
     ports:
-      - "${DATABASE_PORT}:5432"
+      - "24000:5432"
     environment:
-      POSTGRES_DB: "${DATABASE_NAME}"
+      POSTGRES_DB: "nestjs-final-test-db"
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
     volumes:
       - postgres_data:/var/lib/postgresql/data
-      # - ./scripts/create-postgres-db.sql:/docker-entrypoint-initdb.d/create-postgres-db.sql
+      - ./scripts/create-postgres-db.sql:/docker-entrypoint-initdb.d/create-postgres-db.sql
 
 volumes:
   postgres_data:
