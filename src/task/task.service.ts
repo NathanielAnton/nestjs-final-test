@@ -25,17 +25,11 @@ export class TaskService {
       );
     }
 
-    const userTask = await this.getTaskByName(name);
-
-    if (userTask !== null) {
-      throw new HttpException('Task already exists', HttpStatus.CONFLICT);
-    }
-
     const task = Prisma.validator<Prisma.TaskCreateInput>()({
       name: name,
       user: {
         connect: {
-          id: parseInt(userId.toString()),
+          id: userId,
         },
       },
       priority: parseInt(priority.toString()),

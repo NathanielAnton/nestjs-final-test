@@ -31,7 +31,7 @@ export class UserService {
 
   async getUserById(userId: number): Promise<User> {
     return this.databaseService.user.findUnique({
-      where: { id: userId },
+      where: { id: parseInt(userId.toString()) },
     });
   }
 
